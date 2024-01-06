@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            border: 1px solid black;
+            margin-bottom: 3px;
+            width: 150px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="sectionTitle" draggable="true" ondragstart="dragStart(this)" ondragend="dragEnd(this)" ondragover="dragOver(this)" ondrop="drop(this)">DIV-1</div>
+    <div id="sectionDescription" draggable="true" ondragstart="dragStart(this)" ondragend="dragEnd(this)" ondragover="dragOver(this)" ondrop="drop(this)">DIV-2</div>
+    <div id="questionTitle" draggable="true" ondragstart="dragStart(this)" ondragend="dragEnd(this)" ondragover="dragOver(this)" ondrop="drop(this)">DIV-3</div>
+    <div id="questionDescription" draggable="true" ondragstart="dragStart(this)" ondragend="dragEnd(this)" ondragover="dragOver(this)" ondrop="drop(this)">DIV-4</div>
+    <div id="testtitle" draggable="true" ondragstart="dragStart(this)" ondragend="dragEnd(this)" ondragover="dragOver(this)" ondrop="drop(this)">DIV-5</div>
+
+
+
+
+
+    <script>
+        var first= null;
+        var second=null;
+      function dragStart(e){
+           first = e;
+        }
+
+       
+
+        function dragOver(e) {
+            second= e
+        }
+
+
+        function dragEnd(e) {
+            if (first && second && first !== second) {
+
+            // var a = document.getElementById(second.id).parentNode;
+                        
+                var third =first.nextElementSibling
+
+                second.parentNode.insertBefore( first, second);
+                third.parentNode.insertBefore(second, third)
+            }
+
+    // Clear the first and second references for the next drag-and-drop operation
+    // first = null;
+    // second = null;
+        }
+
+        // function dragEnd(e) {
+        //     console.log(e.parentElement);
+        //     // console.log("First" , first);
+        //     // console.log("Second" , second);
+
+        //     var firstId = first.id;
+        //     var secondId = second.id;
+
+
+        //     const firstexistingDiv = document.getElementById(firstId);
+        //     const secondexistingDiv = document.getElementById(secondId)
+
+
+        //     if (firstexistingDiv && secondexistingDiv) {
+        //         console.log(firstexistingDiv);
+        //         console.log(secondexistingDiv);
+        //     var firstChild = first.nextSibling.nextElementSibling.id;
+
+        //     var a= firstexistingDiv.parentNode.replaceChild( firstexistingDiv, second)
+            
+        //     var siblingFirstElement= document.getElementById(firstChild)
+
+        //     siblingFirstElement.parentNode.insertBefore( second, first)
+        //     //     // console.log(a)
+        //     //     // console.log(secondId);
+        //     // // console.log(document.getElementById(secondId));
+            
+        //     // secondexistingDiv.parentNode.replace(secondexistingDiv , firstnewDiv)
+        //     } else {
+        //     console.error("Element with ID " + firstId + " not found");
+        //     }
+
+        // }
+
+
+    //     function drop(ev) {
+    //  ev.preventDefault();
+    //  var data = ev.dataTransfer.getData("text");
+    //  ev.target.appendChild(document.getElementById(data));
+    // }
+
+        function dragLeave(e) {
+            console.log(e);
+        }
+    </script>
+</body>
+</html>
